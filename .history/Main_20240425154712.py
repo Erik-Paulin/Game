@@ -22,8 +22,8 @@ PLAYER_VEL = 2
 STORE_HEIGHT = 80
 STORE_WIDTH = 400
 
-IN_STORE_HEIGHT = (HEIGHT - 100)
-IN_STORE_WIDTH = (WIDTH - 100)
+STOREBACK_HEIGHT = (HEIGHT - 100)
+STOREBACK_WIDTH = (WIDTH - 100)
 
 FONT = pygame.font.SysFont("Arial", 30)
 
@@ -49,13 +49,13 @@ def draw(player, elapsed_time, projs, store, days, money):
     
     pygame.display.update()
 
-def draw_menu(store_back):
+def draw_menu(storeBack):
     WIN.blit(BG, (0, 0))
 
     # time_text = FONT.render("", 1, "white")
     # WIN.blit(time_text, (10, 10))
 
-    pygame.draw.rect(WIN, "gray", store_back)
+    pygame.draw.rect(WIN, "gray", storeBack)
 
     pygame.display.update()
 
@@ -74,7 +74,7 @@ def main(start_time):
     start_time = time.time()
     elapsed_time = 0
     days = 0
-    secs_per_day = 30
+    secs_per_day = 20
 
     money = 1000
 
@@ -84,15 +84,13 @@ def main(start_time):
     projs = []
     hit = False
 
-    in_store = False
-
-    store_back = pygame.Rect(50, 50, IN_STORE_HEIGHT, IN_STORE_WIDTH)
+    storeBack = pygame.Rect(50, 50, STOREBACK_HEIGHT, STOREBACK_WIDTH)
 
     while run:
         clock.tick(200)
         elapsed_time = time.time() - start_time
         
-        if in_store == False:
+        if instore == False:
             proj_count += 5
             if proj_count > proj_increment:
                 for _ in range(random.randrange(5,7)):
@@ -112,14 +110,43 @@ def main(start_time):
                     projs.remove(proj)
                     hit = True
                     break
-
-        if in_store:
-            draw_menu(store)
+                
 
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 run=False
                 break
+
+        keys = pygame.key.get_pressed()
+        
+        if keys[pygame.K_LEFT] and player.x - PLAYER_VEL >= 0:
+            player.x -= PLAYER_VEL
+
+        if keys[pygame.K_RIGHT] and player.x + PLAYER_VEL + PLAYER_WIDTH <= WIDTH:
+            player.x += PLAYER_VEL
+        
+        if keys[pygame.K_UP] and player.y - PLAYER_VEL >= 0:
+            player.y -= PLAYER_VEL
+
+        if keys[pygame.K_DOWN] and player.y + PLAYER_VEL + PLAYER_HEIGHT <= HEIGHT:
+            player.y += PLAYER_VEL
+
+        if keys[pygame.K_e] and store.colliderect(player):
+            proj_increment = 2000
+            
+            for proj in projs[:]:
+                projs.remove(proj)
+            
+            instore = True
+
+            while instore:
+                draw_menu(store)
+                keys = pygame.key.get_pressed()
+
+                if keys[pygame.K_f]:
+                    instore = False
+
+
 
 
         if hit:
@@ -143,33 +170,7 @@ def main(start_time):
         if int(elapsed_time)/secs_per_day > days:
             days += 1
 
-        keys = pygame.key.get_pressed()
-        
-        if keys[pygame.K_LEFT] and player.x - PLAYER_VEL >= 0:
-            player.x -= PLAYER_VEL
-
-        if keys[pygame.K_RIGHT] and player.x + PLAYER_VEL + PLAYER_WIDTH <= WIDTH:
-            player.x += PLAYER_VEL
-        
-        if keys[pygame.K_UP] and player.y - PLAYER_VEL >= 0:
-            player.y -= PLAYER_VEL
-
-        if keys[pygame.K_DOWN] and player.y + PLAYER_VEL + PLAYER_HEIGHT <= HEIGHT:
-            player.y += PLAYER_VEL
-
-        if keys[pygame.K_e] and store.colliderect(player):
-            proj_increment = 2000
-            
-            for proj in projs[:]:
-                projs.remove(proj)
-            
-            in_store = True
-        
-        if keys[pygame.K_f]:
-            in_store = False
-
-        if in_store == False:
-            draw(player, elapsed_time, projs, store, days, money)
+        draw(player, elapsed_time, projs, store, days, money)
 
     pygame.quit()
 

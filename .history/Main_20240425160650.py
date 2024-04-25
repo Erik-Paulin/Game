@@ -49,13 +49,13 @@ def draw(player, elapsed_time, projs, store, days, money):
     
     pygame.display.update()
 
-def draw_menu(store_back):
+def draw_menu(store_ack):
     WIN.blit(BG, (0, 0))
 
     # time_text = FONT.render("", 1, "white")
     # WIN.blit(time_text, (10, 10))
 
-    pygame.draw.rect(WIN, "gray", store_back)
+    pygame.draw.rect(WIN, "gray", storeBack)
 
     pygame.display.update()
 
@@ -86,7 +86,7 @@ def main(start_time):
 
     in_store = False
 
-    store_back = pygame.Rect(50, 50, IN_STORE_HEIGHT, IN_STORE_WIDTH)
+    storeBack = pygame.Rect(50, 50, IN_STORE_HEIGHT, IN_STORE_WIDTH)
 
     while run:
         clock.tick(200)

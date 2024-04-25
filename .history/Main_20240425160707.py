@@ -86,7 +86,7 @@ def main(start_time):
 
     in_store = False
 
-    store_back = pygame.Rect(50, 50, IN_STORE_HEIGHT, IN_STORE_WIDTH)
+    storeBack = pygame.Rect(50, 50, IN_STORE_HEIGHT, IN_STORE_WIDTH)
 
     while run:
         clock.tick(200)

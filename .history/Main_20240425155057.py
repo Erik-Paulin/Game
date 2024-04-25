@@ -49,13 +49,13 @@ def draw(player, elapsed_time, projs, store, days, money):
     
     pygame.display.update()
 
-def draw_menu(store_back):
+def draw_menu(storeBack):
     WIN.blit(BG, (0, 0))
 
     # time_text = FONT.render("", 1, "white")
     # WIN.blit(time_text, (10, 10))
 
-    pygame.draw.rect(WIN, "gray", store_back)
+    pygame.draw.rect(WIN, "gray", storeBack)
 
     pygame.display.update()
 
@@ -74,7 +74,7 @@ def main(start_time):
     start_time = time.time()
     elapsed_time = 0
     days = 0
-    secs_per_day = 30
+    secs_per_day = 20
 
     money = 1000
 
@@ -84,9 +84,7 @@ def main(start_time):
     projs = []
     hit = False
 
-    in_store = False
-
-    store_back = pygame.Rect(50, 50, IN_STORE_HEIGHT, IN_STORE_WIDTH)
+    storeBack = pygame.Rect(50, 50, STOREBACK_HEIGHT, STOREBACK_WIDTH)
 
     while run:
         clock.tick(200)
@@ -121,28 +119,6 @@ def main(start_time):
                 run=False
                 break
 
-
-        if hit:
-            lost_text = FONT.render("You got hit Money - 500", 1, "white")
-            WIN.blit(lost_text, (WIDTH/2 - lost_text.get_width()/2, HEIGHT/2 - lost_text.get_height()/2))
-            money -= 500
-            pygame.display.update()
-            hit = False
-            pygame.time.delay(1000)
-            
-        if money<0:
-            draw(player, elapsed_time, projs, store, days, money)
-            lost_text = FONT.render("You went bankrupt", 1, "white")
-            WIN.blit(lost_text, (WIDTH/2 - lost_text.get_width()/2, HEIGHT/2 - lost_text.get_height()/2))
-            pygame.display.update()
-            pygame.time.delay(1000)
-            run = False
-
-        #stock(elapsed_time, days, secs_per_day)
-
-        if int(elapsed_time)/secs_per_day > days:
-            days += 1
-
         keys = pygame.key.get_pressed()
         
         if keys[pygame.K_LEFT] and player.x - PLAYER_VEL >= 0:
@@ -168,8 +144,32 @@ def main(start_time):
         if keys[pygame.K_f]:
             in_store = False
 
-        if in_store == False:
+
+
+
+
+        if hit:
+            lost_text = FONT.render("You got hit Money - 500", 1, "white")
+            WIN.blit(lost_text, (WIDTH/2 - lost_text.get_width()/2, HEIGHT/2 - lost_text.get_height()/2))
+            money -= 500
+            pygame.display.update()
+            hit = False
+            pygame.time.delay(1000)
+            
+        if money<0:
             draw(player, elapsed_time, projs, store, days, money)
+            lost_text = FONT.render("You went bankrupt", 1, "white")
+            WIN.blit(lost_text, (WIDTH/2 - lost_text.get_width()/2, HEIGHT/2 - lost_text.get_height()/2))
+            pygame.display.update()
+            pygame.time.delay(1000)
+            run = False
+
+        #stock(elapsed_time, days, secs_per_day)
+
+        if int(elapsed_time)/secs_per_day > days:
+            days += 1
+
+        draw(player, elapsed_time, projs, store, days, money)
 
     pygame.quit()
 
