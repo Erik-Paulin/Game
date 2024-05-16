@@ -38,8 +38,6 @@ stock_option_3 = pygame.Rect(30, 190, STOCK_OPTION_WIDTH, STOCK_OPTION_HEIGHT)
 stock_option_4 = pygame.Rect(30, 260, STOCK_OPTION_WIDTH, STOCK_OPTION_HEIGHT)
 stock_option_5 = pygame.Rect(30, 330, STOCK_OPTION_WIDTH, STOCK_OPTION_HEIGHT)
 stock_option_6 = pygame.Rect(30, 400, STOCK_OPTION_WIDTH, STOCK_OPTION_HEIGHT)
-stock_option_7 = pygame.Rect(30, 470, STOCK_OPTION_WIDTH, STOCK_OPTION_HEIGHT)
-stock_option_8 = pygame.Rect(30, 550, STOCK_OPTION_WIDTH, STOCK_OPTION_HEIGHT)
 
 stock_option_1_back = pygame.Rect(29, 49, (STOCK_OPTION_WIDTH+2), (STOCK_OPTION_HEIGHT+2))
 stock_option_2_back = pygame.Rect(29, 119, (STOCK_OPTION_WIDTH+2), (STOCK_OPTION_HEIGHT+2))
@@ -47,8 +45,6 @@ stock_option_3_back = pygame.Rect(29, 189, (STOCK_OPTION_WIDTH+2), (STOCK_OPTION
 stock_option_4_back = pygame.Rect(29, 259, (STOCK_OPTION_WIDTH+2), (STOCK_OPTION_HEIGHT+2))
 stock_option_5_back = pygame.Rect(29, 329, (STOCK_OPTION_WIDTH+2), (STOCK_OPTION_HEIGHT+2))
 stock_option_6_back = pygame.Rect(29, 399, (STOCK_OPTION_WIDTH+2), (STOCK_OPTION_HEIGHT+2))
-stock_option_7_back = pygame.Rect(29, 469, (STOCK_OPTION_WIDTH+2), (STOCK_OPTION_HEIGHT+2))
-stock_option_8_back = pygame.Rect(29, 549, (STOCK_OPTION_WIDTH+2), (STOCK_OPTION_HEIGHT+2))
 
 def draw(player, elapsed_time, projs, store, days, money):
     WIN.blit(BG, (0, 0))
@@ -70,7 +66,7 @@ def draw(player, elapsed_time, projs, store, days, money):
     
     pygame.display.update()
 
-def draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cost_d, cost_e, cost_f, cost_g, cost_h, stock_option_1, stock_option_2, stock_option_3, stock_option_4, stock_option_5, stock_option_6, stock_option_7, stock_option_8, stock_option_1_back, stock_option_2_back, stock_option_3_back, stock_option_4_back, stock_option_5_back, stock_option_6_back, stock_option_7_back, stock_option_8_back):
+def draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cost_d, cost_e, cost_f, stock_option_1, stock_option_2, stock_option_3, stock_option_4, stock_option_5, stock_option_6, stock_option_1_back, stock_option_2_back, stock_option_3_back, stock_option_4_back, stock_option_5_back, stock_option_6_back):
     WIN.blit(BG, (0, 0))
 
     pygame.draw.rect(WIN, "black", store_back)
@@ -81,8 +77,6 @@ def draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cos
     pygame.draw.rect(WIN, "white", stock_option_4_back)
     pygame.draw.rect(WIN, "white", stock_option_5_back)
     pygame.draw.rect(WIN, "white", stock_option_6_back)
-    pygame.draw.rect(WIN, "white", stock_option_7_back)
-    pygame.draw.rect(WIN, "white", stock_option_8_back)
 
     pygame.draw.rect(WIN, "black", stock_option_1)
     pygame.draw.rect(WIN, "black", stock_option_2)
@@ -90,8 +84,6 @@ def draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cos
     pygame.draw.rect(WIN, "black", stock_option_4)
     pygame.draw.rect(WIN, "black", stock_option_5)
     pygame.draw.rect(WIN, "black", stock_option_6)
-    pygame.draw.rect(WIN, "black", stock_option_7)
-    pygame.draw.rect(WIN, "black", stock_option_8)
 
     time_text = FONT.render(f"Time: {round(elapsed_time)}s", 1, "white")
     WIN.blit(time_text, (10, 10))
@@ -102,7 +94,7 @@ def draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cos
 
     stock_text_1 = FONT.render(f"Company A", 1, "white")
     WIN.blit(stock_text_1, (50, 60))
-    stock_text_1_cost = FONT.render(f"Cost: {cost_a}", 1, "white")
+    stock_text_1_cost = FONT.render(f"Cost: {round(cost_a)}", 1, "white")
     WIN.blit(stock_text_1_cost, (300, 60))   
 
     stock_text_2 = FONT.render(f"Company B", 1, "white")
@@ -130,21 +122,11 @@ def draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cos
     stock_text_6_cost = FONT.render(f"Cost: {round(cost_f)}", 1, "white")
     WIN.blit(stock_text_6_cost, (300, 410)) 
 
-    stock_text_7 = FONT.render(f"Company G", 1, "white")
-    WIN.blit(stock_text_7, (50, 480))
-    stock_text_7_cost = FONT.render(f"Cost: {round(cost_g)}", 1, "white")
-    WIN.blit(stock_text_7_cost, (300, 480)) 
-
-    stock_text_8 = FONT.render(f"Company H", 1, "white")
-    WIN.blit(stock_text_8, (50, 560))
-    stock_text_8_cost = FONT.render(f"Cost: {round(cost_h)}", 1, "white")
-    WIN.blit(stock_text_8_cost, (300, 560)) 
-
 
     pygame.display.update()
 
 def stock(cost):
-    return round((float(cost)*(round((random.uniform(0.90,1.15)),2))),0)
+    return (float(cost)*(round((random.uniform(0.90,1.15)),2)))
 
 def main(start_time):
     run = True
@@ -155,8 +137,6 @@ def main(start_time):
     cost_d = 5000
     cost_e = 10000
     cost_f = 50000
-    cost_g = 100000
-    cost_h = 500000
 
     own_a = 0
     own_b = 0
@@ -164,16 +144,12 @@ def main(start_time):
     own_d = 0
     own_e = 0
     own_f = 0
-    own_g = 0
-    own_h = 0
-
-    buy = 0
 
     clock = pygame.time.Clock()
     start_time = time.time()
     elapsed_time = 0
-    days = 1
-    secs_per_day = 5
+    days = 0
+    secs_per_day = 20
 
     money = 1000
 
@@ -191,16 +167,15 @@ def main(start_time):
     while run:
         clock.tick(200)
         elapsed_time = time.time() - start_time
+
         
-        if int(elapsed_time)/secs_per_day > (days):
+        if int(elapsed_time)/secs_per_day > (days+1):
             cost_a = stock(cost_a)
             cost_b = stock(cost_b)
             cost_c = stock(cost_c)
             cost_d = stock(cost_d)
             cost_e = stock(cost_e)
             cost_f = stock(cost_f)
-            cost_g = stock(cost_g)
-            cost_h = stock(cost_h)
         
         if in_store == False:
             proj_count += 5
@@ -244,20 +219,9 @@ def main(start_time):
             pygame.display.update()
             pygame.time.delay(1000)
             run = False
-        
-        if money>1000000:
-            draw(player, elapsed_time, projs, store, days, money)
-            win_text = FONT.render("You Won!", 1, "white")
-            WIN.blit(win_text, (WIDTH/2 - win_text.get_width()/2, HEIGHT/2 - win_text.get_height()/2))
-            pygame.display.update()
-            pygame.time.delay(1000)
-            run = False            
 
         if int(elapsed_time)/secs_per_day > days:
             days += 1
-        
-        if buy>0:
-            buy -= 1
 
         keys = pygame.key.get_pressed()
 
@@ -274,7 +238,7 @@ def main(start_time):
             if keys[pygame.K_DOWN] and player.y + PLAYER_VEL + PLAYER_HEIGHT <= HEIGHT:
                 player.y += PLAYER_VEL
 
-            if keys[pygame.K_f] and store.colliderect(player):
+            if keys[pygame.K_e] and store.colliderect(player):
                 proj_increment = 2000
             
                 for proj in projs[:]:
@@ -283,76 +247,48 @@ def main(start_time):
                 in_store = True
         
         if in_store:
-            if keys[pygame.K_ESCAPE]:
+            if keys[pygame.K_f]:
                 in_store = False
-            if keys[pygame.K_1] and money > cost_a and buy==0:
+            if keys[pygame.K_1] and money > cost_a:
                 own_a +=1
                 money -= cost_a
-                buy += 100
-            if keys[pygame.K_2] and money > cost_b and buy==0:
+            if keys[pygame.K_2] and money > cost_b:
                 own_b +=1      
-                money -= cost_b
-                buy += 100
-            if keys[pygame.K_3] and money > cost_c and buy==0:
+                money -= cost_b          
+            if keys[pygame.K_3] and money > cost_c:
                 own_c +=1      
-                money -= cost_c
-                buy += 100
-            if keys[pygame.K_4] and money > cost_d and buy==0:
+                money -= cost_c       
+            if keys[pygame.K_4] and money > cost_d:
                 own_d +=1 
                 money -= cost_d
-                buy += 100
-            if keys[pygame.K_5] and money > cost_e and buy==0:
+            if keys[pygame.K_5] and money > cost_e:
                 own_e +=1     
-                money -= cost_e
-                buy += 100
-            if keys[pygame.K_5] and money > cost_f and buy==0:
+                money -= cost_e        
+            if keys[pygame.K_5] and money > cost_f:
                 own_f +=1
-                money -= cost_f
-                buy += 100
-            if keys[pygame.K_6] and money > cost_g and buy==0:
-                own_g +=1     
-                money -= cost_g
-                buy += 100
-            if keys[pygame.K_7] and money > cost_h and buy==0:
-                own_h +=1
-                money -= cost_h
-                buy += 100                
+                money -= cost_f     
             
-            if keys[pygame.K_q] and own_a>0 and buy==0:
+            if keys[pygame.K_q] and money:
                 own_a -=1
                 money += cost_a
-                buy += 100
-            if keys[pygame.K_w] and own_b>0 and buy==0:
-                own_b -=1      
-                money += cost_b
-                buy += 100
-            if keys[pygame.K_e] and own_c>0 and buy==0:
-                own_c -=1      
-                money += cost_c
-                buy += 100
-            if keys[pygame.K_r] and own_d>0 and buy==0:
-                own_d -=1 
-                money += cost_d
-                buy += 100
-            if keys[pygame.K_t] and own_e>0 and buy==0:
-                own_e -=1     
-                money += cost_e
-                buy += 100
-            if keys[pygame.K_y] and own_f>0 and buy==0:
-                own_f -=1
-                money += cost_f
-                buy += 100
-            if keys[pygame.K_u] and own_g>0 and buy==0:
-                own_g -=1     
-                money += cost_g
-                buy += 100
-            if keys[pygame.K_i] and own_h>0 and buy==0:
-                own_h -=1
-                money += cost_h
-                buy += 100         
-
+            if keys[pygame.K_2] and money > cost_b:
+                own_b +=1      
+                money -= cost_b          
+            if keys[pygame.K_3] and money > cost_c:
+                own_c +=1      
+                money -= cost_c       
+            if keys[pygame.K_4] and money > cost_d:
+                own_d +=1 
+                money -= cost_d
+            if keys[pygame.K_5] and money > cost_e:
+                own_e +=1     
+                money -= cost_e        
+            if keys[pygame.K_5] and money > cost_f:
+                own_f +=1
+                money -= cost_f                              
+        
         if in_store:
-            draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cost_d, cost_e, cost_f, cost_g, cost_h, stock_option_1, stock_option_2, stock_option_3, stock_option_4, stock_option_5, stock_option_6, stock_option_7, stock_option_8, stock_option_1_back, stock_option_2_back, stock_option_3_back, stock_option_4_back, stock_option_5_back, stock_option_6_back, stock_option_7_back, stock_option_8_back)
+            draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cost_d, cost_e, cost_f, stock_option_1, stock_option_2, stock_option_3, stock_option_4, stock_option_5, stock_option_6, stock_option_1_back, stock_option_2_back, stock_option_3_back, stock_option_4_back, stock_option_5_back, stock_option_6_back)    
 
         if in_store == False:
             draw(player, elapsed_time, projs, store, days, money)

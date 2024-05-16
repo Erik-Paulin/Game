@@ -244,14 +244,7 @@ def main(start_time):
             pygame.display.update()
             pygame.time.delay(1000)
             run = False
-        
-        if money>1000000:
-            draw(player, elapsed_time, projs, store, days, money)
-            win_text = FONT.render("You Won!", 1, "white")
-            WIN.blit(win_text, (WIDTH/2 - win_text.get_width()/2, HEIGHT/2 - win_text.get_height()/2))
-            pygame.display.update()
-            pygame.time.delay(1000)
-            run = False            
+            
 
         if int(elapsed_time)/secs_per_day > days:
             days += 1

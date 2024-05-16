@@ -144,7 +144,7 @@ def draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cos
     pygame.display.update()
 
 def stock(cost):
-    return round((float(cost)*(round((random.uniform(0.90,1.15)),2))),0)
+    return (float(cost)*(round((random.uniform(0.90,1.15)),2)))
 
 def main(start_time):
     run = True
@@ -172,8 +172,8 @@ def main(start_time):
     clock = pygame.time.Clock()
     start_time = time.time()
     elapsed_time = 0
-    days = 1
-    secs_per_day = 5
+    days = 0
+    secs_per_day = 20
 
     money = 1000
 
@@ -191,8 +191,10 @@ def main(start_time):
     while run:
         clock.tick(200)
         elapsed_time = time.time() - start_time
+
         
-        if int(elapsed_time)/secs_per_day > (days):
+        if int(elapsed_time)/secs_per_day > (days+1):
+            
             cost_a = stock(cost_a)
             cost_b = stock(cost_b)
             cost_c = stock(cost_c)
@@ -244,14 +246,6 @@ def main(start_time):
             pygame.display.update()
             pygame.time.delay(1000)
             run = False
-        
-        if money>1000000:
-            draw(player, elapsed_time, projs, store, days, money)
-            win_text = FONT.render("You Won!", 1, "white")
-            WIN.blit(win_text, (WIDTH/2 - win_text.get_width()/2, HEIGHT/2 - win_text.get_height()/2))
-            pygame.display.update()
-            pygame.time.delay(1000)
-            run = False            
 
         if int(elapsed_time)/secs_per_day > days:
             days += 1

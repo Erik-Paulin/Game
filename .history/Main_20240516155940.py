@@ -245,10 +245,10 @@ def main(start_time):
             pygame.time.delay(1000)
             run = False
         
-        if money>1000000:
+        if money>100:
             draw(player, elapsed_time, projs, store, days, money)
-            win_text = FONT.render("You Won!", 1, "white")
-            WIN.blit(win_text, (WIDTH/2 - win_text.get_width()/2, HEIGHT/2 - win_text.get_height()/2))
+            lost_text = FONT.render("You went bankrupt", 1, "white")
+            WIN.blit(lost_text, (WIDTH/2 - lost_text.get_width()/2, HEIGHT/2 - lost_text.get_height()/2))
             pygame.display.update()
             pygame.time.delay(1000)
             run = False            
