@@ -104,49 +104,49 @@ def draw_menu(store_back, elapsed_time, days, money, own_a, own_b, own_c, own_d,
     WIN.blit(stock_text_1, (50, 60))
     stock_text_1_cost = FONT.render(f"Cost: {cost_a}", 1, "white")
     WIN.blit(stock_text_1_cost, (300, 60))   
-    WIN.blit(FONT.render((f"You own:{own_a}"), 1, "white"), (600, 60))
+    WIN.blit(FONT.render(f"You own:{own_a}"), (600, 50))
 
     stock_text_2 = FONT.render(f"Company B", 1, "white")
     WIN.blit(stock_text_2, (50, 130))
     stock_text_2_cost = FONT.render(f"Cost: {round(cost_b)}", 1, "white")
     WIN.blit(stock_text_2_cost, (300, 130))
-    WIN.blit(FONT.render((f"You own:{own_b}"), 1, "white"), (600, 130))
+    WIN.blit(FONT.render(f"You own:{own_b}"), (600, 130))
 
     stock_text_3 = FONT.render(f"Company C", 1, "white")
     WIN.blit(stock_text_3, (50, 200))
     stock_text_3_cost = FONT.render(f"Cost: {round(cost_c)}", 1, "white")
     WIN.blit(stock_text_3_cost, (300, 200))   
-    WIN.blit(FONT.render((f"You own:{own_c}"), 1, "white"), (600, 200))
+    WIN.blit(FONT.render(f"You own:{own_c}"), (600, 200))
 
     stock_text_4 = FONT.render(f"Company D", 1, "white")
     WIN.blit(stock_text_4, (50, 270))
     stock_text_4_cost = FONT.render(f"Cost: {round(cost_d)}", 1, "white")
     WIN.blit(stock_text_4_cost, (300, 270))   
-    WIN.blit(FONT.render((f"You own:{own_d}"), 1, "white"), (600, 270))
+    WIN.blit(FONT.render(f"You own:{own_d}"), (600, 270))
 
     stock_text_5 = FONT.render(f"Company E", 1, "white")
     WIN.blit(stock_text_5, (50, 340))
     stock_text_5_cost = FONT.render(f"Cost: {round(cost_e)}", 1, "white")
     WIN.blit(stock_text_5_cost, (300, 340)) 
-    WIN.blit(FONT.render((f"You own:{own_e}"), 1, "white"), (600, 340))
+    WIN.blit(FONT.render(f"You own:{own_e}"), (600, 340))
 
     stock_text_6 = FONT.render(f"Company F", 1, "white")
     WIN.blit(stock_text_6, (50, 410))
     stock_text_6_cost = FONT.render(f"Cost: {round(cost_f)}", 1, "white")
     WIN.blit(stock_text_6_cost, (300, 410)) 
-    WIN.blit(FONT.render((f"You own:{own_f}"), 1, "white"), (600, 410))
+    WIN.blit(FONT.render(f"You own:{own_f}"), (600, ))
 
     stock_text_7 = FONT.render(f"Company G", 1, "white")
     WIN.blit(stock_text_7, (50, 480))
     stock_text_7_cost = FONT.render(f"Cost: {round(cost_g)}", 1, "white")
     WIN.blit(stock_text_7_cost, (300, 480)) 
-    WIN.blit(FONT.render((f"You own:{own_g}"), 1, "white"), (600, 480))
+    WIN.blit(FONT.render(f"You own:{own_g}"), (600, ))
 
     stock_text_8 = FONT.render(f"Company H", 1, "white")
     WIN.blit(stock_text_8, (50, 560))
     stock_text_8_cost = FONT.render(f"Cost: {round(cost_h)}", 1, "white")
     WIN.blit(stock_text_8_cost, (300, 560)) 
-    WIN.blit(FONT.render((f"You own:{own_h}"), 1, "white"), (600, 560))
+    WIN.blit(FONT.render(f"You own:{own_h}"), (600, ))
 
 
     pygame.display.update()
@@ -360,7 +360,7 @@ def main(start_time):
                 buy += 100         
 
         if in_store:
-            draw_menu(store_back, elapsed_time, days, money, own_a, own_b, own_c, own_d, own_e, own_f, own_g, own_h, cost_a, cost_b, cost_c, cost_d, cost_e, cost_f, cost_g, cost_h, stock_option_1, stock_option_2, stock_option_3, stock_option_4, stock_option_5, stock_option_6, stock_option_7, stock_option_8, stock_option_1_back, stock_option_2_back, stock_option_3_back, stock_option_4_back, stock_option_5_back, stock_option_6_back, stock_option_7_back, stock_option_8_back)
+            draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cost_d, cost_e, cost_f, cost_g, cost_h, stock_option_1, stock_option_2, stock_option_3, stock_option_4, stock_option_5, stock_option_6, stock_option_7, stock_option_8, stock_option_1_back, stock_option_2_back, stock_option_3_back, stock_option_4_back, stock_option_5_back, stock_option_6_back, stock_option_7_back, stock_option_8_back)
 
         if in_store == False:
             draw(player, elapsed_time, projs, store, days, money)
