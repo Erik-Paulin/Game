@@ -169,8 +169,6 @@ def draw_menu(store_back, elapsed_time, days, money, own_a, own_b, own_c, own_d,
     WIN.blit(stock_text_1, (50, 60))
     stock_text_1_cost = FONT.render(f"Cost: {cost_a}", 1, "white")
     WIN.blit(stock_text_1_cost, (300, 60))   
-    WIN.blit(FONT.render((f"You own:{own_a}"), 1, "white"), (600, 60))
-
 
     # The same operations are performed for "Company B" through to "Company H", displaying each one at different positions.   
     stock_text_2 = FONT.render(f"Company B", 1, "white")
@@ -179,9 +177,9 @@ def draw_menu(store_back, elapsed_time, days, money, own_a, own_b, own_c, own_d,
     WIN.blit(stock_text_2_cost, (300, 130))
     WIN.blit(FONT.render((f"You own:{own_b}"), 1, "white"), (600, 130))
 
-    stock_text_3 = FONT.render(f"Company C", 1, "white")
-    WIN.blit(stock_text_3, (50, 200))
-    stock_text_3_cost = FONT.render(f"Cost: {round(cost_c)}", 1, "white")    
+    stock_text_3 = FONT.render(f"Company B", 1, "white")
+    WIN.blit(stock_text_2, (50, 130))
+    stock_text_2_cost = FONT.render(f"Cost: {round(cost_b)}", 1, "white")    
     WIN.blit(stock_text_3_cost, (300, 200))   
     WIN.blit(FONT.render((f"You own:{own_c}"), 1, "white"), (600, 200))
 

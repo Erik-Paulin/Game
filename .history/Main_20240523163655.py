@@ -124,10 +124,14 @@ def draw(player, elapsed_time, projs, store, days, money):
     # Update the display
     pygame.display.update()
 
-# Define a function called draw_menu that takes a significant number of parameters.
+<<<<<<< HEAD
 def draw_menu(store_back, elapsed_time, days, money, own_a, own_b, own_c, own_d, own_e, own_f, own_g, own_h, cost_a, cost_b, cost_c, cost_d, cost_e, cost_f, cost_g, cost_h, stock_option_1, stock_option_2, stock_option_3, stock_option_4, stock_option_5, stock_option_6, stock_option_7, stock_option_8, stock_option_1_back, stock_option_2_back, stock_option_3_back, stock_option_4_back, stock_option_5_back, stock_option_6_back, stock_option_7_back, stock_option_8_back):
+=======
+# Define a function called draw_menu that takes a significant number of parameters.
+def draw_menu(store_back, elapsed_time, days, money, cost_a, cost_b, cost_c, cost_d, cost_e, cost_f, cost_g, cost_h, stock_option_1, stock_option_2, stock_option_3, stock_option_4, stock_option_5, stock_option_6, stock_option_7, stock_option_8, stock_option_1_back, stock_option_2_back, stock_option_3_back, stock_option_4_back, stock_option_5_back, stock_option_6_back, stock_option_7_back, stock_option_8_back):
 
     # The blit method is used to draw the 'BG' bitmap image to the 'WIN' surface at position (0, 0). 
+>>>>>>> 14ecd770e835cf9617c2706d28be1f91a43506df
     WIN.blit(BG, (0, 0))
 
     # Draw a black rectangle for the 'store_back' object on the 'WIN' surface.
@@ -168,9 +172,12 @@ def draw_menu(store_back, elapsed_time, days, money, own_a, own_b, own_c, own_d,
     stock_text_1 = FONT.render(f"Company A", 1, "white")
     WIN.blit(stock_text_1, (50, 60))
     stock_text_1_cost = FONT.render(f"Cost: {cost_a}", 1, "white")
+<<<<<<< HEAD
     WIN.blit(stock_text_1_cost, (300, 60))   
     WIN.blit(FONT.render((f"You own:{own_a}"), 1, "white"), (600, 60))
-
+=======
+    WIN.blit(stock_text_1_cost, (300, 60))
+>>>>>>> 14ecd770e835cf9617c2706d28be1f91a43506df
 
     # The same operations are performed for "Company B" through to "Company H", displaying each one at different positions.   
     stock_text_2 = FONT.render(f"Company B", 1, "white")
@@ -181,7 +188,8 @@ def draw_menu(store_back, elapsed_time, days, money, own_a, own_b, own_c, own_d,
 
     stock_text_3 = FONT.render(f"Company C", 1, "white")
     WIN.blit(stock_text_3, (50, 200))
-    stock_text_3_cost = FONT.render(f"Cost: {round(cost_c)}", 1, "white")    
+    stock_text_3_cost = FONT.render(f"Cost: {round(cost_c)}", 1, "white")
+<<<<<<< HEAD
     WIN.blit(stock_text_3_cost, (300, 200))   
     WIN.blit(FONT.render((f"You own:{own_c}"), 1, "white"), (600, 200))
 
@@ -215,6 +223,13 @@ def draw_menu(store_back, elapsed_time, days, money, own_a, own_b, own_c, own_d,
     WIN.blit(stock_text_8_cost, (300, 560)) 
     WIN.blit(FONT.render((f"You own:{own_h}"), 1, "white"), (600, 560))
 
+=======
+    WIN.blit(stock_text_3_cost, (300, 200))
+    
+    #... (Same coding pattern continues for Company D to Company H)
+>>>>>>> 14ecd770e835cf9617c2706d28be1f91a43506df
+
+    # Update the full display surface to the screen.
     pygame.display.update()
 
 # Function definition: stock(), take in a single argument for the cost and return a random float number times cost and round it to integer. 

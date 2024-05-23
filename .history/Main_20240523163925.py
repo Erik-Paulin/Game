@@ -169,7 +169,7 @@ def draw_menu(store_back, elapsed_time, days, money, own_a, own_b, own_c, own_d,
     WIN.blit(stock_text_1, (50, 60))
     stock_text_1_cost = FONT.render(f"Cost: {cost_a}", 1, "white")
     WIN.blit(stock_text_1_cost, (300, 60))   
-    WIN.blit(FONT.render((f"You own:{own_a}"), 1, "white"), (600, 60))
+        WIN.blit(FONT.render((f"You own:{own_b}"), 1, "white"), (600, 130))
 
 
     # The same operations are performed for "Company B" through to "Company H", displaying each one at different positions.   
